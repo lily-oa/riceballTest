@@ -1,0 +1,108 @@
+// 背景高度是由內容去撐開的
+.bg{
+  background-image: url('../../assets/images/farmer-bg.jpg');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.container{
+  width: 80%;
+  margin: 0 auto;
+  padding: 24px 12px;
+}
+
+.logo{
+  margin-bottom: 24px;
+  a{
+    display: block;
+    background-image: url('../../assets/images/logoSmall.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 178px;
+    height: 34px;
+    margin: 0 auto;
+    @include media-breakpoint-up(md) {
+      background-image: url(../../assets/images/logoBig.png);
+      width: 439px;
+      height: 105px;
+    }
+  }
+}
+
+.overflow-y-auto{
+  overflow-y: auto;
+}
+.overflow-x-auto{
+  overflow-x: auto;
+}
+.flex-1{
+  flex: 1 1 0%;
+}
+.h-full{
+  height: 100%;
+}
+.w-full{
+  width: 100%;
+}
+.whitespace-nowrap{
+  white-space: nowrap;
+}
+.hidden{
+    display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}
+.rounded-l-none{
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.border-1-primary{
+  border: 1px solid primary;
+}
+.text-xl{
+  font-size: 1.25rem;  //20px
+  line-height: 1.75rem;  //28px
+}
+.bg-opacity-90{
+  background: $primary;
+  opacity: .9;
+}
+
+// Table
+.table-auto{
+  table-layout: auto;
+}
+.bg-cream{
+  background: rgb(244, 241, 234);
+  opacity: 1;
+}
+.tracking-wider{
+  letter-spacing: 0.05rem;  // 0.8px
+}
+
+.fa-solid, .fas{
+  font-family: Font Awesome 6 Free;
+  font-weight: 900;
+}
+.fa-sm{
+  font-size: .875rem; //14px
+  line-height: .7143rem; //11.4288px
+  vertical-align: .05357rem; //0.85712px
+}
+.sort--active{
+  opacity: 1;
+}
+// css 動畫設定部份
+.transition-opacity{
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.opacity-40{
+  opacity: .4;
+}
