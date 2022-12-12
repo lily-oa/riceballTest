@@ -1,3 +1,5 @@
+"use strict";
+
 // Swal.fire({
 //   icon:'info',
 //   title: '請填寫文字內容',
@@ -10,24 +12,27 @@
 //     text: result.value
 //   })
 // })
-const ipAPI = '//api.ipify.org?format=json';
-const inputValue = fetch(ipAPI).then(response => response.json()).then(data => data.ip);
-const {
-  value: ipAddress
-} = await Swal.fire({
-  title: 'Enter your IP address',
-  input: 'text',
-  inputLabel: 'Your IP address',
-  inputValue: inputValue,
-  showCancelButton: true,
-  inputValidator: value => {
-    if (!value) {
-      return 'You need to write something!';
-    }
-  }
-});
 
+var ipAPI = '//api.ipify.org?format=json';
+var inputValue = fetch(ipAPI).then(function (response) {
+  return response.json();
+}).then(function (data) {
+  return data.ip;
+});
+var _await$Swal$fire = await Swal.fire({
+    title: 'Enter your IP address',
+    input: 'text',
+    inputLabel: 'Your IP address',
+    inputValue: inputValue,
+    showCancelButton: true,
+    inputValidator: function inputValidator(value) {
+      if (!value) {
+        return 'You need to write something!';
+      }
+    }
+  }),
+  ipAddress = _await$Swal$fire.value;
 if (ipAddress) {
-  Swal.fire(`Your IP address is ${ipAddress}`);
+  Swal.fire("Your IP address is ".concat(ipAddress));
 }
 //# sourceMappingURL=all.js.map
