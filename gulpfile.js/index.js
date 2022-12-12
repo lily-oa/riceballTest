@@ -65,7 +65,7 @@ function babel() {
   return gulp.src(envOptions.javascript.src)
     .pipe($.sourcemaps.init())
     .pipe($.babel({
-      plugins: ['@babel/transform-runtime'],
+      presets: ['@babel/env'],
     }))
     .pipe($.concat(envOptions.javascript.concat))
     .pipe($.sourcemaps.write('.'))
