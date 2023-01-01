@@ -64,15 +64,15 @@
 
 //------------------------------------------------------test3
 const checkScore = (score) =>{
- return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     console.log('正在觀察是否及格')
     setTimeout(()=>{
 
-     if(score >= 60){
+    if(score >= 60){
       resolve(score);
-     }else{
+    }else{
       reject('不及格');
-     }
+    }
     }, 2000);
   });
 }
