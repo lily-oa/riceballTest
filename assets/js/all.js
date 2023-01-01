@@ -27,8 +27,55 @@
 // const timeout4 = setTimeout(() => console.log('end'), 4000); 
 
 //---------------------------------------------------------------test2
-var checkScore = new Promise(function (resolve, reject) {
-  var score = Math.round(Math.random() * 100);
-  resolve(score);
+// const checkScore = new Promise((resolve, reject) => {
+//   console.log('正在批改中')
+//   setTimeout(()=>{
+//    const score = Math.round(Math.random()*100);
+//    if(score >= 60){
+//     resolve(score);
+//    }else{
+//     reject('不及格');
+//    }
+//   }, 2000);
+
+// });
+
+// checkScore
+//   .then(data => console.log(data))  
+//   .catch(error => console.log(error))
+
+// const checkStuName = new Promise((resolve, reject) =>{
+//   console.log('正在確認名單');
+//   setTimeout(() => {
+//     const stuScore = Math.round(Math.random()*100);
+//     if(stuScore >= 60){
+//       resolve(stuScore);
+//     }else{
+//       reject(`${stuScore}這是要刪除的名單號`);
+//     }
+//   }, 5000);
+// });
+
+// checkStuName
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error));
+
+//------------------------------------------------------test3
+var checkScore = function checkScore(score) {
+  return new Promise(function (resolve, reject) {
+    console.log('正在觀察是否及格');
+    setTimeout(function () {
+      if (score >= 60) {
+        resolve(score);
+      } else {
+        reject('不及格');
+      }
+    }, 2000);
+  });
+};
+checkScore(59).then(function (data) {
+  return console.log(data);
+})["catch"](function (error) {
+  return console.log(error);
 });
 //# sourceMappingURL=all.js.map
