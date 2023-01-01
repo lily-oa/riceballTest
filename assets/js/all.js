@@ -61,21 +61,38 @@
 //   .catch(error => console.log(error));
 
 //------------------------------------------------------test3
-var checkScore = function checkScore(score) {
+// const checkScore = (score) =>{
+//   return new Promise((resolve, reject) => {
+//     console.log('正在觀察是否及格')
+//     setTimeout(()=>{
+
+//     if(score >= 60){
+//       resolve(score);
+//     }else{
+//       reject('不及格');
+//     }
+//     }, 2000);
+//   });
+// }
+
+// checkScore(60)
+//   .then(data => console.log(data))  
+//   .catch(error => console.log(error))
+
+//-------------------------------------------------------test4
+function correctTest(name) {
   return new Promise(function (resolve, reject) {
-    console.log('正在觀察是否及格');
+    console.log('正在批改作業中');
     setTimeout(function () {
-      if (score >= 60) {
-        resolve(score);
-      } else {
-        reject('不及格');
-      }
-    }, 2000);
+      var score = Math.round(Math.random() * 100);
+      resolve({
+        name: name,
+        score: score
+      });
+    }, 3000);
   });
-};
-checkScore(59).then(function (data) {
+}
+correctTest("小明").then(function (data) {
   return console.log(data);
-})["catch"](function (error) {
-  return console.log(error);
 });
 //# sourceMappingURL=all.js.map
