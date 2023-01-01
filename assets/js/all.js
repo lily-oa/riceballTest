@@ -14,14 +14,21 @@
 // })
 
 //----------------------------------------------------------test
-var timeout = setTimeout(callFun, 1500);
-function callFun() {
-  console.log('觸發');
-}
-var timeout2 = setTimeout(function () {
-  return console.log('qq');
-}, 2000);
-var timeout3 = setTimeout(function () {
-  return console.log('你好');
-}, 3000);
+// const timeout = setTimeout(callFun, 1500);
+
+// function callFun(){
+//   console.log('觸發');
+// }
+
+// const timeout2 = setTimeout(()=> console.log('qq'), 2000);
+
+// const timeout3 = setTimeout(() => console.log('你好'), 3000);
+
+// const timeout4 = setTimeout(() => console.log('end'), 4000); 
+
+//---------------------------------------------------------------test2
+var checkScore = new Promise(function (resolve, reject) {
+  var score = Math.round(Math.random() * 100);
+  resolve(score);
+});
 //# sourceMappingURL=all.js.map
