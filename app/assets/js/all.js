@@ -63,20 +63,60 @@
 //   .catch(error => console.log(error));
 
 //------------------------------------------------------test3
-const checkScore = (score) =>{
-  return new Promise((resolve, reject) => {
-    console.log('正在觀察是否及格')
-    setTimeout(()=>{
+// const checkScore = (score) =>{
+//   return new Promise((resolve, reject) => {
+//     console.log('正在觀察是否及格')
+//     setTimeout(()=>{
 
-    if(score >= 60){
-      resolve(score);
-    }else{
-      reject('不及格');
-    }
-    }, 2000);
+//     if(score >= 60){
+//       resolve(score);
+//     }else{
+//       reject('不及格');
+//     }
+//     }, 2000);
+//   });
+// }
+
+// checkScore(60)
+//   .then(data => console.log(data))  
+//   .catch(error => console.log(error))
+
+//-------------------------------------------------------test4
+function correctTest(name){
+  return new Promise((resolve, reject) => {
+    console.log('正在批改作業中');
+    setTimeout(() => {
+      const score = Math.round(Math.random()*100);
+      resolve(
+        {
+          name,
+          score
+        }
+      );
+    }, 3000);
+    
   });
 }
 
-checkScore(59)
-  .then(data => console.log(data))  
-  .catch(error => console.log(error))
+correctTest("小明")
+  .then(data => console.log(data))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
