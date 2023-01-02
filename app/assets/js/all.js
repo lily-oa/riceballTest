@@ -82,6 +82,47 @@
 //   .catch(error => console.log(error))
 
 //-------------------------------------------------------test4
+// function correctTest(name) {
+//   return new Promise((resolve, reject) => {
+//     console.log('正在批改作業中');
+//     setTimeout(() => {
+//       const score = Math.round(Math.random() * 100);
+//       if (score >= 20) {
+//         resolve({
+//           name,
+//           score
+//         })
+//       }else{
+//         reject(`退學，分數是${score}`)
+//       }
+//     }, 1000);
+//   });
+// }
+
+// function checkReward(data){
+//   return new Promise((resolve, reject) => {
+//     console.log('正在檢查獎品中');
+//     setTimeout(()=>{
+//       if(data.score>=90){
+//         resolve(`${data.name}獲得電影票`)
+//       }else if(data.score>=60 && data.score<90){
+//         resolve(`${data.name}獲得嘉獎`)
+//       }else{
+//         reject(`你沒有獎品，打手心10下!分數是${data.score}`)
+//       }
+//     }, 1000)
+//   })
+// }
+
+// correctTest("小明")
+//   .then(data => {
+//     return checkReward(data);
+//   })
+//   .then(reward => console.log(reward))
+//.then( data => console.log(`分數是${data.score}, 名字是${data.name}`))
+//   .catch(error => console.log(error))
+
+//-------------------------------------------------------------------------------test5
 function correctTest(name) {
   return new Promise((resolve, reject) => {
     console.log('正在批改作業中');
@@ -119,26 +160,17 @@ correctTest("小明")
     return checkReward(data);
   })
   .then(reward => console.log(reward))
-  //.then( data => console.log(`分數是${data.score}, 名字是${data.name}`))
   .catch(error => console.log(error))
+// async、await
+const init = async function(){
+  try{
+    const studentA = await correctTest('小明');
+    const rewardA = await checkReward(studentA);
 
-  const studentA = correctTest('小明');
-  const rewardA = checkReward(studentA)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }catch(error){
+    console.log(error)
+  }
+}
 
 
 
