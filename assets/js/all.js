@@ -119,4 +119,6 @@ correctTest("小明").then(function (data) {
 ["catch"](function (error) {
   return console.log(error);
 });
+var studentA = correctTest('小明');
+var rewardA = checkReward(studentA);
 //# sourceMappingURL=all.js.map
