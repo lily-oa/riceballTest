@@ -87,7 +87,7 @@ function correctTest(name) {
     console.log('正在批改作業中');
     setTimeout(() => {
       const score = Math.round(Math.random() * 100);
-      if (score >= 60) {
+      if (score >= 20) {
         resolve({
           name,
           score
@@ -107,6 +107,8 @@ function checkReward(data){
         resolve(`${data.name}獲得電影票`)
       }else if(data.score>=60 && data.score<90){
         resolve(`${data.name}獲得嘉獎`)
+      }else{
+        reject(`你沒有獎品，打手心10下!分數是${data.score}`)
       }
     }, 1000)
   })
