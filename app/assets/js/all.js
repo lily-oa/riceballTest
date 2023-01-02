@@ -122,6 +122,9 @@ correctTest("小明")
   //.then( data => console.log(`分數是${data.score}, 名字是${data.name}`))
   .catch(error => console.log(error))
 
+  const studentA = correctTest('小明');
+  const rewardA = checkReward(studentA)
+
 
 
 
