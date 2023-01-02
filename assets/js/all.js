@@ -169,19 +169,29 @@
 
 //--------------------------------------------------------test6
 // Promise.all
-function correctTest(name) {
-  return new Promise(function (resolve, reject) {
-    console.log('正在批改作業中');
-    setTimeout(function () {
-      var score = Math.round(Math.random() * 100);
-      resolve({
-        name: name,
-        score: score
-      });
-    }, Math.random() * 1000);
-  });
-}
-Promise.all([correctTest('小明'), correctTest('小花'), correctTest('小小')]).then(function (data) {
+// function correctTest(name) {
+//   return new Promise((resolve, reject) => {
+//     console.log('正在批改作業中');
+//     setTimeout(() => {
+//       const score = Math.round(Math.random() * 100);
+//         resolve({
+//           name,
+//           score
+//         })
+//     }, Math.random() * 1000);
+//   });
+// }
+// Promise.all([correctTest('小明'),correctTest('小花'),correctTest('小小')])
+//   .then(data => console.log(data));
+
+//-------------------------------------------------------------test7
+// Fetch
+var url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+fetch(url).then(function (response) {
+  return response.json();
+}).then(function (data) {
   return console.log(data);
+})["catch"](function (error) {
+  return console.log(error);
 });
 //# sourceMappingURL=all.js.map
