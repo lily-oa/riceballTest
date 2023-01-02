@@ -85,14 +85,36 @@ function correctTest(name) {
     console.log('正在批改作業中');
     setTimeout(function () {
       var score = Math.round(Math.random() * 100);
-      resolve({
-        name: name,
-        score: score
-      });
-    }, 3000);
+      if (score >= 60) {
+        resolve({
+          name: name,
+          score: score
+        });
+      } else {
+        reject("\u9000\u5B78\uFF0C\u5206\u6578\u662F".concat(score));
+      }
+    }, 1000);
+  });
+}
+function checkReward(data) {
+  return new Promise(function (resolve, reject) {
+    console.log('正在檢查獎品中');
+    setTimeout(function () {
+      if (data.score >= 90) {
+        resolve("".concat(data.name, "\u7372\u5F97\u96FB\u5F71\u7968"));
+      } else if (data.score >= 60 && data.score < 90) {
+        resolve("".concat(data.name, "\u7372\u5F97\u5609\u734E"));
+      }
+    }, 1000);
   });
 }
 correctTest("小明").then(function (data) {
-  return console.log(data);
+  return checkReward(data);
+}).then(function (reward) {
+  return console.log(reward);
+})
+//.then( data => console.log(`分數是${data.score}, 名字是${data.name}`))
+["catch"](function (error) {
+  return console.log(error);
 });
 //# sourceMappingURL=all.js.map
