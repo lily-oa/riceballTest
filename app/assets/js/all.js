@@ -199,19 +199,40 @@
 
 //------------------------------------------------------------test8
 // XMLHttpRequest
+// const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+
+
+
+// 非同步的寫法
+// function getUrl(url) {
+//   return new Promise((resolve, reject) => {
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('GET', url);
+//     xhr.onload = () => resolve(xhr.responseText);
+//     xhr.onerror = () => reject(xhr.statusText);
+//     xhr.send();
+//   })
+// }
+
+// getUrl(url)
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error));
+
+//---------------------------------------------------------------test9
+// axios 
 const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
-
-
-function getUrl(url) {
-  return new Promise((resolve, reject)=>{
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.onload = () => resolve(xhr.responseText);
-    xhr.onerror = () =>reject(xhr.statusText);
-    xhr.send();
-  })
+const axios = {
+  get: function(url) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onload = resolve(xhr.responseText);
+      xhr.onerror = reject(xhr.statusText);
+      xhr.send();
+    })
+  }
 }
 
-getUrl(url)
+axios.get(url)
   .then(data => console.log(data))
   .catch(error => console.log(error));
