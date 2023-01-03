@@ -186,10 +186,30 @@
 
 //-------------------------------------------------------------test7
 // Fetch
+// const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
+
+//------------------------------------------------------------test8
+// XMLHttpRequest
 var url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
-fetch(url).then(function (response) {
-  return response.json();
-}).then(function (data) {
+function getUrl(url) {
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = function () {
+      return resolve(xhr.responseText);
+    };
+    xhr.onerror = function () {
+      return reject(xhr.statusText);
+    };
+    xhr.send();
+  });
+}
+getUrl(url).then(function (data) {
   return console.log(data);
 })["catch"](function (error) {
   return console.log(error);
