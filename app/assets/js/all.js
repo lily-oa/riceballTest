@@ -220,19 +220,29 @@
 
 //---------------------------------------------------------------test9
 // axios 
-const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
-const axios = {
-  get: function(url) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', url);
-      xhr.onload = () => resolve(xhr.responseText);
-      xhr.onerror = () => reject(xhr.statusText);
-      xhr.send();
-    })
-  }
-}
+// const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+// const axios = {
+//   get: function(url) {
+//     return new Promise((resolve, reject) => {
+//       const xhr = new XMLHttpRequest();
+//       xhr.open('GET', url);
+//       xhr.onload = () => resolve(xhr.responseText);
+//       xhr.onerror = () => reject(xhr.statusText);
+//       xhr.send();
+//     })
+//   }
+// }
 
-axios.get(url)
-  .then(data => console.log(data))
-  .catch(error => console.log(error));
+// axios.get(url)
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error));
+
+//----------------------------------------------------------------test10
+//sweetalert2
+
+Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Something went wrong!',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
