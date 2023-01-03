@@ -220,8 +220,12 @@ var axios = {
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url);
-      xhr.onload = resolve(xhr.responseText);
-      xhr.onerror = reject(xhr.statusText);
+      xhr.onload = function () {
+        return resolve(xhr.responseText);
+      };
+      xhr.onerror = function () {
+        return reject(xhr.statusText);
+      };
       xhr.send();
     });
   }
