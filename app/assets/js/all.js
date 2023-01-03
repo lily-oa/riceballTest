@@ -241,8 +241,21 @@
 //sweetalert2
 
 Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Something went wrong!',
-  footer: '<a href="">Why do I have this issue?</a>'
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  console.log(result);
+  if (result.isConfirmed) {
+    Swal.fire(
+      {
+        title: '新增成功',
+        icon: 'success',
+      }
+    )
+  }
 })
