@@ -278,7 +278,7 @@
 //-------------------------------------------------------------------test12
 const ipAPI = '//api.ipify.org?format=json';
 
-const inputValue = async(ipAPI)
+const inputValue = fetch(ipAPI)
   .then(response => response.json())
   .then(data => data.ip)
 
