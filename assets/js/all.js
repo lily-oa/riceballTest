@@ -271,7 +271,7 @@
 
 //-------------------------------------------------------------------test12
 var ipAPI = '//api.ipify.org?format=json';
-var inputValue = async(ipAPI).then(function (response) {
+var inputValue = fetch(ipAPI).then(function (response) {
   return response.json();
 }).then(function (data) {
   return data.ip;
