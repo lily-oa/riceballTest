@@ -276,6 +276,7 @@
 // })
   
 //-------------------------------------------------------------------test12
+(async() =>{
 const ipAPI = '//api.ipify.org?format=json';
 
 const inputValue = fetch(ipAPI)
@@ -298,3 +299,4 @@ const { value: ipAddress } = await Swal.fire({
 if (ipAddress) {
   Swal.fire(`Your IP address is ${ipAddress}`)
 }
+})()
