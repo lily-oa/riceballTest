@@ -303,26 +303,16 @@
 
 //----------------------------------------------------------------------todolist
 //註冊
-// function signUp(email, nickname, pwd) {
-//   axios.post('https://todoo.5xcamp.us/users', {
-//     "user": {
-//       "email": email,
-//       "nickname": nickname,
-//       "password": pwd
-//     }
-//   })
-//   .then(res => console.log(res))
-//   .catch(error => console.log(error.response))
-// }
+const apiUrl = 'https://todoo.5xcamp.us/'
 
-function signUp(email, nickname, password){
-  axios.post('https://todoo.5xcamp.us/users',{
+function signUp(email, nickname, pwd) {
+  axios.post(`${apiUrl}/users`, {
     "user": {
       "email": email,
       "nickname": nickname,
-      "password": password
+      "password": pwd
     }
   })
-    .then(res => console.log(res))
-    .catch(error => console.log(error))
+  .then(res => console.log(res))
+  .catch(error => console.log(error.response))
 }
