@@ -1,3 +1,5 @@
+"use strict";
+
 // Swal.fire({
 //   icon:'info',
 //   title: '請填寫文字內容',
@@ -294,5 +296,18 @@
 // })()
 
 //----------------------------------------------------------------------todolist
-"use strict";
+//註冊
+function signUp(email, nickname, pwd) {
+  axios.post('https://todoo.5xcamp.us/users', {
+    "user": {
+      "email": email,
+      "nickname": nickname,
+      "password": pwd
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (error) {
+    return console.log(error.response);
+  });
+}
 //# sourceMappingURL=all.js.map
