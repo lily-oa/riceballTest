@@ -297,23 +297,38 @@
 
 //----------------------------------------------------------------------todolist
 //註冊
-// const apiUrl = 'https://todoo.5xcamp.us/'
-
-// function signUp(email, nickname, pwd) {
-//   axios.post(`${apiUrl}/users`, {
-//     "user": {
-//       "email": email,
-//       "nickname": nickname,
-//       "password": pwd
-//     }
-//   })
-//   .then(res => console.log(res))
-//   .catch(error => console.log(error.response))
-// }
-
-function getAPI() {
-  axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2').then(function (res) {
+var apiUrl = 'https://todoo.5xcamp.us/';
+function signUp(email, nickname, pwd) {
+  axios.post("".concat(apiUrl, "/users"), {
+    "user": {
+      "email": email,
+      "nickname": nickname,
+      "password": pwd
+    }
+  }).then(function (res) {
     return console.log(res);
+  })["catch"](function (error) {
+    return console.log(error.response);
   });
 }
+
+//登入
+function login(email, pwd) {
+  axios.post("".concat(apiUrl, "/users/sign_in"), {
+    "user": {
+      "email": email,
+      "password": pwd
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (error) {
+    return console.log(error);
+  });
+}
+
+//-------------------------------------------------------------------------------------------------測試是否有支援垮網域
+// function getAPI(){
+//   axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2')
+//   .then(res => console.log(res));
+// }
 //# sourceMappingURL=all.js.map
