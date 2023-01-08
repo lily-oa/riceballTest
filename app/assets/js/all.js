@@ -303,21 +303,21 @@
 
 //----------------------------------------------------------------------todolist
 //註冊
-const apiUrl = 'https://todoo.5xcamp.us/'
+// const apiUrl = 'https://todoo.5xcamp.us/'
 
-function signUp(email, nickname, pwd) {
-  axios.post(`${apiUrl}/users`, {
-    "user": {
-      "email": email,
-      "nickname": nickname,
-      "password": pwd
-    }
-  })
-  .then(res => console.log(res))
-  .catch(error => console.log(error.response))
-}
+// function signUp(email, nickname, pwd) {
+//   axios.post(`${apiUrl}/users`, {
+//     "user": {
+//       "email": email,
+//       "nickname": nickname,
+//       "password": pwd
+//     }
+//   })
+//   .then(res => console.log(res))
+//   .catch(error => console.log(error.response))
+// }
 
 function getAPI(){
-  axios.get('https://data.kcg.gov.tw/dataset/6f29f6f4-2549-4473-aa90-bf60d10895dc/resource/30dfc2cf-17b5-4a40-8bb7-c511ea166bd3/download/lightrailtraffic.json')
+  axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2')
   .then(res => console.log(res));
 }
