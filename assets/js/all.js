@@ -298,6 +298,8 @@
 //----------------------------------------------------------------------todolist
 //註冊
 var apiUrl = 'https://todoo.5xcamp.us/';
+//Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjA0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMTcxOTg1LCJleHAiOjE2NzQ0Njc5ODUsImp0aSI6IjU5YmQ0YTNmLTJhMzAtNGI3Zi05OGNhLTUyMTUwMDlhZWRiMSJ9.nWVfaZ50n4YemMnM6xJ4_Q9KYLvuZHsI7vI2flnZHeQ
+var token = '';
 function signUp(email, nickname, pwd) {
   axios.post("".concat(apiUrl, "/users"), {
     "user": {
@@ -320,7 +322,7 @@ function login(email, pwd) {
       "password": pwd
     }
   }).then(function (res) {
-    return console.log(res);
+    return token = res.headers.authorization;
   })["catch"](function (error) {
     return console.log(error);
   });
