@@ -297,18 +297,23 @@
 
 //----------------------------------------------------------------------todolist
 //註冊
-var apiUrl = 'https://todoo.5xcamp.us/';
-function signUp(email, nickname, pwd) {
-  axios.post("".concat(apiUrl, "/users"), {
-    "user": {
-      "email": email,
-      "nickname": nickname,
-      "password": pwd
-    }
-  }).then(function (res) {
+// const apiUrl = 'https://todoo.5xcamp.us/'
+
+// function signUp(email, nickname, pwd) {
+//   axios.post(`${apiUrl}/users`, {
+//     "user": {
+//       "email": email,
+//       "nickname": nickname,
+//       "password": pwd
+//     }
+//   })
+//   .then(res => console.log(res))
+//   .catch(error => console.log(error.response))
+// }
+
+function getAPI() {
+  axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2').then(function (res) {
     return console.log(res);
-  })["catch"](function (error) {
-    return console.log(error.response);
   });
 }
 //# sourceMappingURL=all.js.map
