@@ -331,6 +331,17 @@ function login(email, pwd) {
     .catch(error => console.log(error))
 }
 
+//驗證金鑰 
+function getTodo(){
+  axios.get(`${apiUrl}/todos`,{
+    headers:{
+      'Authorization':token
+    }
+  })
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+}
+
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
 //   axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2')
