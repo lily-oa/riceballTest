@@ -305,7 +305,7 @@
 //註冊
 const apiUrl = 'https://todoo.5xcamp.us/'
 //Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjA0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMTcxOTg1LCJleHAiOjE2NzQ0Njc5ODUsImp0aSI6IjU5YmQ0YTNmLTJhMzAtNGI3Zi05OGNhLTUyMTUwMDlhZWRiMSJ9.nWVfaZ50n4YemMnM6xJ4_Q9KYLvuZHsI7vI2flnZHeQ
-let token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjE4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMzA3Mzg4LCJleHAiOjE2NzQ2MDMzODgsImp0aSI6ImZiYWNmMDk5LWI2ZjMtNDRiMy04YTY1LTJlZWVmMDk1OTcyYiJ9.NVQCrZIZ_yeUEaNd0mM6ab6DJCSCLqY62DjeKbrV3m4';
+let token = '';
 function signUp(email, nickname, pwd) {
   axios.post(`${apiUrl}/users`, {
     "user": {
@@ -344,7 +344,19 @@ function getTodo(){
 
 
 //新增代辦事項
-
+function addTodo(todo){
+  axios.post(`${apiUrl}/todos`, {
+    "todo": {
+      "content": todo
+    }
+  },{
+    headers:{
+      'Authorization':token
+    }
+  })
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+}
 
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
