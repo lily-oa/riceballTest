@@ -299,7 +299,7 @@
 //註冊
 var apiUrl = 'https://todoo.5xcamp.us/';
 //Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjA0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMTcxOTg1LCJleHAiOjE2NzQ0Njc5ODUsImp0aSI6IjU5YmQ0YTNmLTJhMzAtNGI3Zi05OGNhLTUyMTUwMDlhZWRiMSJ9.nWVfaZ50n4YemMnM6xJ4_Q9KYLvuZHsI7vI2flnZHeQ
-var token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjE4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMzA3Mzg4LCJleHAiOjE2NzQ2MDMzODgsImp0aSI6ImZiYWNmMDk5LWI2ZjMtNDRiMy04YTY1LTJlZWVmMDk1OTcyYiJ9.NVQCrZIZ_yeUEaNd0mM6ab6DJCSCLqY62DjeKbrV3m4';
+var token = '';
 function signUp(email, nickname, pwd) {
   axios.post("".concat(apiUrl, "/users"), {
     "user": {
@@ -342,6 +342,21 @@ function getTodo() {
 }
 
 //新增代辦事項
+function addTodo(todo) {
+  axios.post("".concat(apiUrl, "/todos"), {
+    "todo": {
+      "content": todo
+    }
+  }, {
+    headers: {
+      'Authorization': token
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (err) {
+    return console.log(err);
+  });
+}
 
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
