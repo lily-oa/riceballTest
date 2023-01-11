@@ -366,14 +366,28 @@ function updateTodo(todo, todoId) {
     }
   }, {
     headers: {
-      'Authorization': token
+      "Authorization": token
     }
   }).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
-    return console.log(err);
+    return consol.log(err);
   });
 }
+
+// function updateTodo(todo, todoId){
+//   axios.put(`${apiUrl}/todos/${todoId}`, {
+//     "todo": {
+//       "content": todo
+//     }
+//   },{
+//     headers:{
+//       'Authorization':token
+//     }
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+// }
 
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
