@@ -360,18 +360,34 @@ function addTodo(todo){
 
 //編輯todo(單筆修改)
 function updateTodo(todo, todoId){
-  axios.put(`${apiUrl}/todos/${todoId}`, {
+  axios.put(`${apiUrl}/todos/${todoId}`,{
     "todo": {
       "content": todo
     }
   },{
     headers:{
-      'Authorization':token
+      "Authorization":token
     }
   })
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
+  .then(res =>console.log(res))
+  .catch(err =>consol.log(err))
 }
+
+
+
+// function updateTodo(todo, todoId){
+//   axios.put(`${apiUrl}/todos/${todoId}`, {
+//     "todo": {
+//       "content": todo
+//     }
+//   },{
+//     headers:{
+//       'Authorization':token
+//     }
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+// }
 
 
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
