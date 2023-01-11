@@ -358,6 +358,22 @@ function addTodo(todo){
   .catch(err => console.log(err))
 }
 
+//編輯todo(單筆修改)
+function updateTodo(todo, todoId){
+  axios.put(`${apiUrl}/todos/${todoId}`, {
+    "todo": {
+      "content": todo
+    }
+  },{
+    headers:{
+      'Authorization':token
+    }
+  })
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+}
+
+
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
 //   axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2')
