@@ -373,6 +373,17 @@ function updateTodo(todo, todoId){
   .catch(err => console.log(err))
 }
 
+//刪除 todos
+function deleteTodo(todoId){
+  axios.delete(`${apiUrl}/todos/${todoId}`,{
+    headers:{
+      'Authorization':token
+    }
+  })
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+}
+
 
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
