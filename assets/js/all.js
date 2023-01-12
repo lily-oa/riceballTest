@@ -375,6 +375,19 @@ function updateTodo(todo, todoId) {
   });
 }
 
+//刪除 todos
+function deleteTodo(todoId) {
+  axios["delete"]("".concat(apiUrl, "/todos/").concat(todoId), {
+    headers: {
+      'Authorization': token
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (err) {
+    return console.log(err);
+  });
+}
+
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
 //   axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2')
