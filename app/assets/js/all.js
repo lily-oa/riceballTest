@@ -305,7 +305,7 @@
 //註冊
 const apiUrl = 'https://todoo.5xcamp.us/'
 //Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjA0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMTcxOTg1LCJleHAiOjE2NzQ0Njc5ODUsImp0aSI6IjU5YmQ0YTNmLTJhMzAtNGI3Zi05OGNhLTUyMTUwMDlhZWRiMSJ9.nWVfaZ50n4YemMnM6xJ4_Q9KYLvuZHsI7vI2flnZHeQ
-let token = '';
+//let token = '';
 function signUp(email, nickname, pwd) {
   axios.post(`${apiUrl}/users`, {
     "user": {
@@ -325,19 +325,17 @@ function login(email, pwd) {
       "email": email,
       "password":pwd
     }
-  }).then(res =>
-    token = res.headers.authorization
+  })
+  // 此行是在每次登錄時將 token 帶到 axios上
+  // 事先在 headers 的欄位 [Authorization] 將 token抓過來
+    .then(res => axios.defaults.headers.common['Authorization'] = res.headers.authorization
     )
     .catch(error => console.log(error))
 }
 
 //驗證金鑰 
 function getTodo(){
-  axios.get(`${apiUrl}/todos`,{
-    headers:{
-      'Authorization':token
-    }
-  })
+  axios.get(`${apiUrl}/todos`)
   .then(res => console.log(res))
   .catch(err => console.log(err))
 }
@@ -348,10 +346,6 @@ function addTodo(todo){
   axios.post(`${apiUrl}/todos`, {
     "todo": {
       "content": todo
-    }
-  },{
-    headers:{
-      'Authorization':token
     }
   })
   .then(res => console.log(res))
@@ -364,10 +358,6 @@ function updateTodo(todo, todoId){
     "todo": {
       "content": todo
     }
-  },{
-    headers:{
-      'Authorization':token
-    }
   })
   .then(res => console.log(res))
   .catch(err => console.log(err))
@@ -375,22 +365,14 @@ function updateTodo(todo, todoId){
 
 //刪除 todos
 function deleteTodo(todoId){
-  axios.delete(`${apiUrl}/todos/${todoId}`,{
-    headers:{
-      'Authorization':token
-    }
-  })
+  axios.delete(`${apiUrl}/todos/${todoId}`)
   .then(res => console.log(res))
   .catch(err => console.log(err))
 }
 
-//更新 todos 未完成及已完成(會一直切換)
+//更新 todos 未完成及已完成(可以一直切換)
 function toggleTodo(todoId){
-  axios.patch(`${apiUrl}/todos/${todoId}/toggle`,{},{
-    headers:{
-      'Authorization':token
-    }
-  })
+  axios.patch(`${apiUrl}/todos/${todoId}/toggle`,{})
   .then(res => console.log(res))
   .catch(err => console.log(err.response))
 }
