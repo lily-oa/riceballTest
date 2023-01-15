@@ -299,7 +299,7 @@
 //註冊
 var apiUrl = 'https://todoo.5xcamp.us/';
 //Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjA0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMTcxOTg1LCJleHAiOjE2NzQ0Njc5ODUsImp0aSI6IjU5YmQ0YTNmLTJhMzAtNGI3Zi05OGNhLTUyMTUwMDlhZWRiMSJ9.nWVfaZ50n4YemMnM6xJ4_Q9KYLvuZHsI7vI2flnZHeQ
-var token = '';
+//let token = '';
 function signUp(email, nickname, pwd) {
   axios.post("".concat(apiUrl, "/users"), {
     "user": {
@@ -321,8 +321,11 @@ function login(email, pwd) {
       "email": email,
       "password": pwd
     }
-  }).then(function (res) {
-    return token = res.headers.authorization;
+  })
+  // 此行是在每次登錄時將 token 帶到 axios上
+  // 事先在 headers 的欄位 [Authorization] 將 token抓過來
+  .then(function (res) {
+    return axios.defaults.headers.common['Authorization'] = res.headers.authorization;
   })["catch"](function (error) {
     return console.log(error);
   });
@@ -330,11 +333,7 @@ function login(email, pwd) {
 
 //驗證金鑰 
 function getTodo() {
-  axios.get("".concat(apiUrl, "/todos"), {
-    headers: {
-      'Authorization': token
-    }
-  }).then(function (res) {
+  axios.get("".concat(apiUrl, "/todos")).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
     return console.log(err);
@@ -346,10 +345,6 @@ function addTodo(todo) {
   axios.post("".concat(apiUrl, "/todos"), {
     "todo": {
       "content": todo
-    }
-  }, {
-    headers: {
-      'Authorization': token
     }
   }).then(function (res) {
     return console.log(res);
@@ -364,10 +359,6 @@ function updateTodo(todo, todoId) {
     "todo": {
       "content": todo
     }
-  }, {
-    headers: {
-      'Authorization': token
-    }
   }).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
@@ -377,24 +368,16 @@ function updateTodo(todo, todoId) {
 
 //刪除 todos
 function deleteTodo(todoId) {
-  axios["delete"]("".concat(apiUrl, "/todos/").concat(todoId), {
-    headers: {
-      'Authorization': token
-    }
-  }).then(function (res) {
+  axios["delete"]("".concat(apiUrl, "/todos/").concat(todoId)).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
     return console.log(err);
   });
 }
 
-//更新 todos 未完成及已完成(會一直切換)
+//更新 todos 未完成及已完成(可以一直切換)
 function toggleTodo(todoId) {
-  axios.patch("".concat(apiUrl, "/todos/").concat(todoId, "/toggle"), {}, {
-    headers: {
-      'Authorization': token
-    }
-  }).then(function (res) {
+  axios.patch("".concat(apiUrl, "/todos/").concat(todoId, "/toggle"), {}).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
     return console.log(err.response);
