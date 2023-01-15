@@ -374,27 +374,26 @@ function updateTodo(todo, todoId){
 }
 
 //刪除 todos
-function delTodo(todoId){
+function deleteTodo(todoId){
   axios.delete(`${apiUrl}/todos/${todoId}`,{
     headers:{
       'Authorization':token
     }
   })
-  .then(res =>console.log(res))
+  .then(res => console.log(res))
   .catch(err => console.log(err))
 }
 
-
-// function deleteTodo(todoId){
-//   axios.delete(`${apiUrl}/todos/${todoId}`,{
-//     headers:{
-//       'Authorization':token
-//     }
-//   })
-//   .then(res => console.log(res))
-//   .catch(err => console.log(err))
-// }
-
+//更新 todos 未完成及已完成(會一直切換)
+function toggleTodo(todoId){
+  axios.patch(`${apiUrl}/todos/${todoId}/toggle`,{},{
+    headers:{
+      'Authorization':token
+    }
+  })
+  .then(res => console.log(res))
+  .catch(err => console.log(err.response))
+}
 
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
