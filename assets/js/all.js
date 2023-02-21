@@ -392,23 +392,22 @@
 //------------------------------------------------------------promise
 //檢查分數
 //註冊一個 promise
-var checkScore = new Promise(function (resolve, reject) {
-  console.log('正在批改中');
-  setTimeout(function () {
-    //產生一組2位數 0-99 分的隨機分數
-    var score = Math.round(Math.random() * 100);
-    if (score >= 60) {
-      resolve(score);
-    } else {
-      reject('不及格');
-    }
-  }, 2000);
-});
-checkScore.then(function (data) {
-  return console.log(data);
-})["catch"](function (error) {
-  return console.log(error);
-});
+// const checkScore = new Promise((resolve, reject) => {
+//   console.log('正在批改中');
+//   setTimeout(() => {
+//產生一組2位數 0-99 分的隨機分數
+//     const score = Math.round(Math.random() * 100);
+//     if (score >= 60) {
+//       resolve(score);
+//     } else {
+//       reject('不及格');
+//     }
+//   }, 2000);
+// })
+
+// checkScore
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
 
 // 註冊一份作業成績 
 // const hscore = new Promise((resolve, reject) => {
@@ -426,4 +425,32 @@ checkScore.then(function (data) {
 // hscore
 //   .then(hdata => console.log(hdata))
 //   .catch(herror => console.log(herror));
+
+//promise 帶參數
+var checkScore = function checkScore(score) {
+  return new Promise(function (resolve, reject) {
+    console.log('正在觀察是否及格');
+    setTimeout(function () {
+      if (score >= 60) {
+        resolve(score);
+      } else {
+        reject('不及格');
+      }
+    }, 2000);
+  });
+};
+checkScore(80).then(function (data) {
+  return console.log(data);
+})["catch"](function (error) {
+  return console.log(error);
+});
+
+//-------------------------------------設計兩個 promise 串接
+// 第一個 promise 計算成績
+// 第二個 promise 審核成績
+function correctTest(name) {
+  return new Promise(function (resolve, reject) {
+    var score = Math.round(Math.random() * 100);
+  });
+}
 //# sourceMappingURL=all.js.map
