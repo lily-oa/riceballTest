@@ -1,3 +1,5 @@
+"use strict";
+
 // Swal.fire({
 //   icon:'info',
 //   title: '請填寫文字內容',
@@ -374,8 +376,54 @@
 //   .then(res => console.log(res));
 // }
 
-//------------------------------------------------------------------------複習 0221
+//------------------------------------------------------------複習 0221
 
-// setTimeout語法
-"use strict";
+// setTimeout 計時器
+// const timeout = setTimeout(callback function, 2000)
+
+// const timeout = setTimeout(callFun, 3000);
+
+// function callFun(){
+//   console.log('觸發');
+// }
+
+// const timeout2 = setTimeout(()=>console.log('再次觸發'), 5000);
+
+//------------------------------------------------------------promise
+//檢查分數
+//註冊一個 promise
+var checkScore = new Promise(function (resolve, reject) {
+  console.log('正在批改中');
+  setTimeout(function () {
+    //產生一組2位數 0-99 分的隨機分數
+    var score = Math.round(Math.random() * 100);
+    if (score >= 60) {
+      resolve(score);
+    } else {
+      reject('不及格');
+    }
+  }, 2000);
+});
+checkScore.then(function (data) {
+  return console.log(data);
+})["catch"](function (error) {
+  return console.log(error);
+});
+
+// 註冊一份作業成績 
+// const hscore = new Promise((resolve, reject) => {
+//   console.log('老師批改作業中');
+//   setTimeout(() => {
+//     const score = Math.round(Math.random() * 100);
+//     if (score >= 80) {
+//       resolve(score);
+//     } else {
+//       reject('作業重寫');
+//     }
+//   }, 3000);
+// })
+
+// hscore
+//   .then(hdata => console.log(hdata))
+//   .catch(herror => console.log(herror));
 //# sourceMappingURL=all.js.map
