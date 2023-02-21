@@ -303,83 +303,87 @@
 
 //----------------------------------------------------------------------todolist
 //註冊
-const apiUrl = 'https://todoo.5xcamp.us/'
+//const apiUrl = 'https://todoo.5xcamp.us/'
 //Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjA0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjczMTcxOTg1LCJleHAiOjE2NzQ0Njc5ODUsImp0aSI6IjU5YmQ0YTNmLTJhMzAtNGI3Zi05OGNhLTUyMTUwMDlhZWRiMSJ9.nWVfaZ50n4YemMnM6xJ4_Q9KYLvuZHsI7vI2flnZHeQ
 //let token = '';
-function signUp(email, nickname, pwd) {
-  axios.post(`${apiUrl}/users`, {
-    "user": {
-      "email": email,
-      "nickname": nickname,
-      "password": pwd
-    }
-  })
-  .then(res => console.log(res))
-  .catch(error => console.log(error.response))
-}
+// function signUp(email, nickname, pwd) {
+//   axios.post(`${apiUrl}/users`, {
+//     "user": {
+//       "email": email,
+//       "nickname": nickname,
+//       "password": pwd
+//     }
+//   })
+//   .then(res => console.log(res))
+//   .catch(error => console.log(error.response))
+// }
 
 //登入
-function login(email, pwd) {
-  axios.post(`${apiUrl}/users/sign_in`, {
-    "user": {
-      "email": email,
-      "password":pwd
-    }
-  })
+// function login(email, pwd) {
+//   axios.post(`${apiUrl}/users/sign_in`, {
+//     "user": {
+//       "email": email,
+//       "password":pwd
+//     }
+//   })
   // 此行是在每次登錄時將 token 帶到 axios上
   // 事先在 headers 的欄位 [Authorization] 將 token抓過來
-    .then(res => axios.defaults.headers.common['Authorization'] = res.headers.authorization
-    )
-    .catch(error => console.log(error))
-}
+//     .then(res => axios.defaults.headers.common['Authorization'] = res.headers.authorization
+//     )
+//     .catch(error => console.log(error))
+// }
 
 //驗證金鑰 
-function getTodo(){
-  axios.get(`${apiUrl}/todos`)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-}
+// function getTodo(){
+//   axios.get(`${apiUrl}/todos`)
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+// }
 
 
 //新增代辦事項
-function addTodo(todo){
-  axios.post(`${apiUrl}/todos`, {
-    "todo": {
-      "content": todo
-    }
-  })
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-}
+// function addTodo(todo){
+//   axios.post(`${apiUrl}/todos`, {
+//     "todo": {
+//       "content": todo
+//     }
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+// }
 
 //編輯todo(單筆修改)
-function updateTodo(todo, todoId){
-  axios.put(`${apiUrl}/todos/${todoId}`, {
-    "todo": {
-      "content": todo
-    }
-  })
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-}
+// function updateTodo(todo, todoId){
+//   axios.put(`${apiUrl}/todos/${todoId}`, {
+//     "todo": {
+//       "content": todo
+//     }
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+// }
 
 //刪除 todos
-function deleteTodo(todoId){
-  axios.delete(`${apiUrl}/todos/${todoId}`)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-}
+// function deleteTodo(todoId){
+//   axios.delete(`${apiUrl}/todos/${todoId}`)
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+// }
 
 //更新 todos 未完成及已完成(可以一直切換)
-function toggleTodo(todoId){
-  axios.patch(`${apiUrl}/todos/${todoId}/toggle`,{})
-  .then(res => console.log(res))
-  .catch(err => console.log(err.response))
-}
+// function toggleTodo(todoId){
+//   axios.patch(`${apiUrl}/todos/${todoId}/toggle`,{})
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err.response))
+// }
 
 //-------------------------------------------------------------------------------------------------測試是否有支援垮網域
 // function getAPI(){
 //   axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2')
 //   .then(res => console.log(res));
 // }
+
+//------------------------------------------------------------------------複習 0221
+
+// setTimeout語法
 
