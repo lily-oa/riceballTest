@@ -455,7 +455,20 @@
 // 第一個 promise 計算成績
 // 第二個 promise 審核成績
 function correctTest(name){
-  return new Promise((resolve, reject) => {
-    const score = Math.round(Math.random()*100);
+  return new Promise((resolve, reject) =>{
+    console.log('批改作業中');
+    setTimeout(()=>{
+      const score = Math.round(Math.random()*100);
+      resolve(
+        {
+          name, 
+          score
+        }
+      )
+      reject();
+    }, 3000);
   })
 }
+correctTest('小明')
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
