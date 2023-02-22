@@ -434,22 +434,22 @@
   //   .catch(herror => console.log(herror));
 
   //promise 帶參數
-  const checkScore = (score)=>{
-  return new Promise((resolve, reject) => {
-    console.log('正在觀察是否及格');
-    setTimeout(() => {
-      if (score >= 60) {
-        resolve(score);
-      } else {
-        reject('不及格');
-      }
-    }, 2000);
-  })
-}
+//   const checkScore = (score)=>{
+//   return new Promise((resolve, reject) => {
+//     console.log('正在觀察是否及格');
+//     setTimeout(() => {
+//       if (score >= 60) {
+//         resolve(score);
+//       } else {
+//         reject('不及格');
+//       }
+//     }, 2000);
+//   })
+// }
 
-  checkScore(80)
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
+//   checkScore(80)
+//     .then(data => console.log(data))
+//     .catch(error => console.log(error))
 
 //-------------------------------------設計兩個 promise 串接
 // 第一個 promise 計算成績
@@ -472,3 +472,23 @@ function correctTest(name){
 correctTest('小明')
   .then(data => console.log(data))
   .catch(error => console.log(error));
+
+
+// function cashYouHave(yourName){
+//   return new Promise((resolve, reject)=>{
+//     console.log('正在數錢中');
+//     setTimeout(()=>{
+//       const money = Math.round(Math.random()*1000);
+//       resolve(
+//         {
+//           yourName, 
+//           money
+//         }
+//       )
+//       reject()
+//     }, 5000);
+//   })
+// }
+// cashYouHave('小紅')
+//   .then(cash => console.log(cash))
+//   .catch(noError => console.log(noError));
