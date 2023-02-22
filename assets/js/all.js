@@ -427,30 +427,61 @@
 //   .catch(herror => console.log(herror));
 
 //promise 帶參數
-var checkScore = function checkScore(score) {
-  return new Promise(function (resolve, reject) {
-    console.log('正在觀察是否及格');
-    setTimeout(function () {
-      if (score >= 60) {
-        resolve(score);
-      } else {
-        reject('不及格');
-      }
-    }, 2000);
-  });
-};
-checkScore(80).then(function (data) {
-  return console.log(data);
-})["catch"](function (error) {
-  return console.log(error);
-});
+//   const checkScore = (score)=>{
+//   return new Promise((resolve, reject) => {
+//     console.log('正在觀察是否及格');
+//     setTimeout(() => {
+//       if (score >= 60) {
+//         resolve(score);
+//       } else {
+//         reject('不及格');
+//       }
+//     }, 2000);
+//   })
+// }
+
+//   checkScore(80)
+//     .then(data => console.log(data))
+//     .catch(error => console.log(error))
 
 //-------------------------------------設計兩個 promise 串接
 // 第一個 promise 計算成績
 // 第二個 promise 審核成績
 function correctTest(name) {
   return new Promise(function (resolve, reject) {
-    var score = Math.round(Math.random() * 100);
+    console.log('批改作業中');
+    setTimeout(function () {
+      var score = Math.round(Math.random() * 100);
+      resolve({
+        name: name,
+        score: score
+      });
+      reject();
+    }, 3000);
   });
 }
+correctTest('小明').then(function (data) {
+  return console.log(data);
+})["catch"](function (error) {
+  return console.log(error);
+});
+
+// function cashYouHave(yourName){
+//   return new Promise((resolve, reject)=>{
+//     console.log('正在數錢中');
+//     setTimeout(()=>{
+//       const money = Math.round(Math.random()*1000);
+//       resolve(
+//         {
+//           yourName, 
+//           money
+//         }
+//       )
+//       reject()
+//     }, 5000);
+//   })
+// }
+// cashYouHave('小紅')
+//   .then(cash => console.log(cash))
+//   .catch(noError => console.log(noError));
 //# sourceMappingURL=all.js.map
