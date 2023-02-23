@@ -447,61 +447,72 @@
 //-------------------------------------設計兩個 promise 串接
 //第一個 promise 計算成績
 //第二個 promise 審核成績
-function correctTest(name) {
-  return new Promise(function (resolve, reject) {
-    console.log('批改作業中');
-    setTimeout(function () {
-      var score = Math.round(Math.random() * 100);
-      if (score >= 60) {
-        resolve({
-          name: name,
-          score: score
-        });
-      } else {
-        reject("您已達退學的門檻");
-      }
-    }, 2000);
-  });
-}
-function checkReward(data) {
-  return new Promise(function (resolve, reject) {
-    console.log('檢查獎品中');
-    setTimeout(function () {
-      resolve(data.score);
-    }, 1000);
-  });
-}
-correctTest('小明').then(function (data) {
-  return checkReward(data);
-}).then(function (score) {
-  return console.log("\u5206\u6578\u662F".concat(score));
-})["catch"](function (error) {
-  return console.log(error);
-});
+// function correctTest(name){
+//   return new Promise((resolve, reject) =>{
+//     console.log('批改作業中');
+//     setTimeout(()=>{
+//       const score = Math.round(Math.random()*100);
+//       if(score >= 60){
+//         resolve(
+//           {
+//             name, 
+//             score
+//           }
+//         )
+//       }else{
+//         reject("您已達退學的門檻");
+//       }
+
+//     }, 2000);
+//   })
+// }
+
+// function checkReward(data){
+//   return new Promise((resolve, reject) => {
+//     console.log('檢查獎品中');
+//     setTimeout(()=>{
+//       resolve(data);
+//     }, 1000)
+//   })
+// }
+
+// correctTest('小明')
+//   .then(data => checkReward(data))
+//   .then(data2 => console.log(`分數是${data2.score}, 名字是${data2.name}`))
+//   .catch(error => console.log(error));
 
 //獎勵
 
 // 可不可以進去夜店
-// function wantToGo(yourName){
-//   return new Promise((resolve, reject) => {
-//     console.log('你有多少錢？');
-//     setTimeout(()=>{
-//       const money = Math.round(Math.random()*1000);
-//       if(money >= 300){    
-//         resolve(
-//           {
-//             yourName,
-//             money
-//           }
-//         )
-//       }else{
-//         reject('錢不夠，滾出去!!')
-//       }
-//     }, 3000);
-//   });
-// }
-
-// wantToGo('親愛的~')
-//   .then(money => console.log(money))
-//   .catch(error => console.log(error))
+function wantToGo(yourName) {
+  return new Promise(function (resolve, reject) {
+    console.log('你有多少錢？');
+    setTimeout(function () {
+      var money = Math.round(Math.random() * 1000);
+      if (money >= 300) {
+        resolve({
+          yourName: yourName,
+          money: money
+        });
+      } else {
+        reject('錢不夠，滾出去!!');
+      }
+    }, 3000);
+  });
+}
+function canI(money) {
+  return new Promise(function (resolve, reject) {
+    console.log('夠嗎？可以讓開了嗎!!!');
+    setTimeout(function () {
+      resolve(money);
+    }, 2000);
+  });
+}
+wantToGo('親愛的~').then(function (money) {
+  return canI(money);
+}).then(function (go) {
+  return console.log("".concat(go.yourName, ", \u4F60\u6240\u4ED8\u7684\u91D1\u984D\u662F").concat(go.money, "\uFF0C\u8ACB~"));
+})["catch"](function (error) {
+  return console.log(error);
+});
 //# sourceMappingURL=all.js.map
