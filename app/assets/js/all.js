@@ -585,7 +585,7 @@ function checkReward(data){
 
 // 想改寫成下方那樣
 // const studentA = correctTest('小明');
-// const reward = checkReward(studnetA);
+// const rewardA = checkReward(studnetA);
 
 // async、 await
 // async 是非同步的語法
