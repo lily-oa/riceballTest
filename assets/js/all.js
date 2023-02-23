@@ -447,72 +447,79 @@
 //-------------------------------------設計兩個 promise 串接
 //第一個 promise 計算成績
 //第二個 promise 審核成績
-// function correctTest(name){
-//   return new Promise((resolve, reject) =>{
-//     console.log('批改作業中');
-//     setTimeout(()=>{
-//       const score = Math.round(Math.random()*100);
-//       if(score >= 60){
-//         resolve(
-//           {
-//             name, 
-//             score
-//           }
-//         )
-//       }else{
-//         reject("您已達退學的門檻");
-//       }
-
-//     }, 2000);
-//   })
-// }
-
-// function checkReward(data){
-//   return new Promise((resolve, reject) => {
-//     console.log('檢查獎品中');
-//     setTimeout(()=>{
-//       resolve(data);
-//     }, 1000)
-//   })
-// }
-
-// correctTest('小明')
-//   .then(data => checkReward(data))
-//   .then(data2 => console.log(`分數是${data2.score}, 名字是${data2.name}`))
-//   .catch(error => console.log(error));
+function correctTest(name) {
+  return new Promise(function (resolve, reject) {
+    console.log('批改作業中');
+    setTimeout(function () {
+      var score = Math.round(Math.random() * 100);
+      if (score >= 60) {
+        resolve({
+          name: name,
+          score: score
+        });
+      } else {
+        reject("您已達退學的門檻");
+      }
+    }, 2000);
+  });
+}
+function checkReward(data) {
+  return new Promise(function (resolve, reject) {
+    console.log('檢查獎品中');
+    setTimeout(function () {
+      if (data.score >= 90) {
+        resolve("".concat(data.name, "\u7372\u5F97\u96FB\u5F71\u7968"));
+      } else if (data.score >= 60 && data.score < 90) {
+        resolve("".concat(data.name, "\u7372\u5F97\u5609\u734E"));
+      }
+    }, 1000);
+  });
+}
+correctTest('小明').then(function (data) {
+  return checkReward(data);
+}).then(function (reward) {
+  return console.log(reward);
+})["catch"](function (error) {
+  return console.log(error);
+});
 
 //獎勵
 
 // 可不可以進去夜店
-function wantToGo(yourName) {
-  return new Promise(function (resolve, reject) {
-    console.log('你有多少錢？');
-    setTimeout(function () {
-      var money = Math.round(Math.random() * 1000);
-      if (money >= 300) {
-        resolve({
-          yourName: yourName,
-          money: money
-        });
-      } else {
-        reject('錢不夠，滾出去!!');
-      }
-    }, 3000);
-  });
-}
-function canI(money) {
-  return new Promise(function (resolve, reject) {
-    console.log('夠嗎？可以讓開了嗎!!!');
-    setTimeout(function () {
-      resolve(money);
-    }, 2000);
-  });
-}
-wantToGo('親愛的~').then(function (money) {
-  return canI(money);
-}).then(function (go) {
-  return console.log("".concat(go.yourName, ", \u4F60\u6240\u4ED8\u7684\u91D1\u984D\u662F").concat(go.money, "\uFF0C\u8ACB~"));
-})["catch"](function (error) {
-  return console.log(error);
-});
+// function wantToGo(yourName){
+//   return new Promise((resolve, reject) => {
+//     console.log('你有多少錢？');
+//     setTimeout(()=>{
+//       const money = Math.round(Math.random()*1000);
+//       if(money >= 300){    
+//         resolve(
+//           {
+//             yourName,
+//             money
+//           }
+//         )
+//       }else{
+//         reject('錢不夠，滾出去!!')
+//       }
+//     }, 3000);
+//   });
+// }
+
+// function canI(number){
+//   return new Promise((resolve, reject)=>{
+//     console.log('夠嗎？可以讓開了嗎!!!')
+//     setTimeout(() => {
+//       if(number.money >= 500){
+//         resolve(`${number.yourName}你可以直接升級成我們的永久會員喔~`)
+//       }else if(number.money >= 300 && number.money<500){
+//         resolve(`${number.yourName}，你只要再加50萬就可以成為白金會員喔~每次來都能打8折`)
+//       }
+//     }, 2000)
+//   });
+// }
+
+// wantToGo('親愛的~')
+//   .then(number => canI(number))
+//   .then(go => console.log(go))
+//   .catch(error => console.log(error))
 //# sourceMappingURL=all.js.map
