@@ -522,20 +522,18 @@ function canI(number) {
         resolve("".concat(number.yourName, "\u4F60\u53EF\u4EE5\u76F4\u63A5\u5347\u7D1A\u6210\u6211\u5011\u7684\u6C38\u4E45\u6703\u54E1\u5594~"));
       } else if (number.money >= 300 && number.money < 500) {
         resolve("".concat(number.yourName, "\uFF0C\u4F60\u53EA\u8981\u518D\u52A050\u842C\u5C31\u53EF\u4EE5\u6210\u70BA\u767D\u91D1\u6703\u54E1\u5594~\u6BCF\u6B21\u4F86\u90FD\u80FD\u62538\u6298"));
+      } else {
+        console.log(number.money);
+        reject("\u5F88\u62B1\u6B49~\u4F60\u4E0D\u80FD\u9032\u53BB~\u4F60\u53EF\u4EE5\u56DE\u53BB\u62FF\u9322\u518D\u4F86");
       }
     }, 2000);
   });
 }
 
-// wantToGo('親愛的~')
-//   .then(number => canI(number))
-//   .then(go => console.log(go))
-//   .catch(error => console.log(error))
-
-// async await
+// async await 
 var init = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var someOne, into;
+    var who, decide;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -544,12 +542,12 @@ var init = /*#__PURE__*/function () {
             _context.next = 3;
             return wantToGo('親愛的~');
           case 3:
-            someOne = _context.sent;
+            who = _context.sent;
             _context.next = 6;
-            return canI(someOne);
+            return canI(who);
           case 6:
-            into = _context.sent;
-            console.log(into);
+            decide = _context.sent;
+            console.log(decide);
             _context.next = 13;
             break;
           case 10:
@@ -568,6 +566,24 @@ var init = /*#__PURE__*/function () {
   };
 }();
 init();
+
+// wantToGo('親愛的~')
+//   .then(number => canI(number))
+//   .then(go => console.log(go))
+//   .catch(error => console.log(error))
+
+// async await
+// const init = async function(){
+//   try{
+//     const someOne = await wantToGo('親愛的~');
+//     const into = await canI(someOne);
+//     console.log(into);
+//   }catch(error){
+//     console.log(error);
+//   }
+// }
+
+// init();
 
 //---------------------------------async await非同步的語法
 // function correctTest(name){
