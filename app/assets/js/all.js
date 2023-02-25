@@ -514,7 +514,7 @@ function wantToGo(yourName){
             money
           }
         )
-      }else{
+      }else{  
         reject('錢不夠，滾出去!!')
       }
     }, 3000);
@@ -529,10 +529,26 @@ function canI(number){
         resolve(`${number.yourName}你可以直接升級成我們的永久會員喔~`)
       }else if(number.money >= 300 && number.money<500){
         resolve(`${number.yourName}，你只要再加50萬就可以成為白金會員喔~每次來都能打8折`)
+      }else{
+        console.log(number.money);
+        reject(`很抱歉~你不能進去~你可以回去拿錢再來`)
       }
     }, 2000)
   });
 }
+
+// async await 
+const init = async function(){
+  try{
+    const who = await wantToGo('親愛的~');
+    const decide = await canI(who);
+    console.log(decide);
+  }catch(error){
+    console.log(error);
+  }
+}
+
+init();
 
 // wantToGo('親愛的~')
 //   .then(number => canI(number))
@@ -542,17 +558,17 @@ function canI(number){
   
 
   // async await
-  const init = async function(){
-    try{
-      const someOne = await wantToGo('親愛的~');
-      const into = await canI(someOne);
-      console.log(into);
-    }catch(error){
-      console.log(error);
-    }
-  }
+  // const init = async function(){
+  //   try{
+  //     const someOne = await wantToGo('親愛的~');
+  //     const into = await canI(someOne);
+  //     console.log(into);
+  //   }catch(error){
+  //     console.log(error);
+  //   }
+  // }
 
-  init();
+  // init();
 
 
 //---------------------------------async await非同步的語法
