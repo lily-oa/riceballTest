@@ -500,138 +500,80 @@
 // const studentA = correctTest('小明');
 // const reward = checkReward(studnetA);
 
-//----------------------------------------------------我設計的範例 
-// 可不可以進去夜店
-function wantToGo(yourName){
-  return new Promise((resolve, reject) => {
-    console.log('你有多少錢？');
-    setTimeout(()=>{
-      const money = Math.round(Math.random()*1000);
-      if(money >= 200){    
-        resolve(
-          {
-            yourName,
-            money
-          }
-        )
-      }else{  
-        reject('錢不夠，滾出去!!')
-      }
-    }, 2000);
-  });
-}
-
-function canI(number){
-  return new Promise((resolve, reject)=>{
-    console.log('夠嗎？可以讓開了嗎!!!')
-    setTimeout(() => {
-      if(number.money >= 800){
-        resolve(`${number.yourName}你可以直接升級成我們的永久會員喔~`)
-      }else if(number.money >= 600 && number.money<800){
-        resolve(`${number.yourName}，你只要再加50萬就可以成為白金會員喔~每次來都能打8折`)
-      }else{
-        console.log(number.money);
-        reject(`很抱歉~你不能進去~你可以回去拿錢再來`)
-      }
-    }, 2000)
-  });
-}
-
-// async await 
-const init = async function(){
-  try{
-    const who = await wantToGo('親愛的~');
-    const decide = await canI(who);
-    console.log(decide);
-  }catch(error){
-    console.log(error);
-  }
-}
-
-init();
-
-// wantToGo('親愛的~')
-//   .then(number => canI(number))
-//   .then(go => console.log(go))
-//   .catch(error => console.log(error))
-  
-  
-
-  // async await
-  // const init = async function(){
-  //   try{
-  //     const someOne = await wantToGo('親愛的~');
-  //     const into = await canI(someOne);
-  //     console.log(into);
-  //   }catch(error){
-  //     console.log(error);
-  //   }
-  // }
-
-  // init();
-
-
-//---------------------------------async await非同步的語法
-// function correctTest(name){
-//   return new Promise((resolve, reject) =>{
-//     console.log('批改作業中');
-//     setTimeout(()=>{
-//       const score = Math.round(Math.random()*100);
-//       if(score >= 20){
-//         resolve(
-//           {
-//             name, 
-//             score
-//           }
-//         )
-//       }else{
-//         reject("您已達退學的門檻");
-//       }
-      
-      
-//     }, 2000);
-//   })
-// }
-
-// function checkReward(data){
-//   return new Promise((resolve, reject) => {
-//     console.log('檢查獎品中');
-//     setTimeout(()=>{
-//       if(data.score >= 90){
-//         resolve(`${data.name}獲得電影票`)
-//       }else if(data.score>=60 && data.score<90){
-//         resolve(`${data.name}獲得嘉獎`)
-//       }else{
-//         console.log(data.score);
-//         reject(`你沒有獎品打手心10下`)
-//       }
-//     }, 1000)
-//   })
-// }
-
-// correctTest('小明')
-//   .then(data => checkReward(data))
-//   .then( reward => console.log(reward))
-//   .catch(error => console.log(error));
-
-// 想改寫成下方那樣
-// const studentA = correctTest('小明');
-// const rewardA = checkReward(studnetA);
-
-// async、 await
-// async 是非同步的語法
-// await 是 then(){retrun}的意思，跑 promise
-// init 初始化函式
+// 改寫成下方非同步語法
+//async、 await
+//async 是非同步的語法
+//await 是 then(){retrun}的意思，跑 promise
+//init 初始化函式
 // const init = async function(){
 //   try{
 //     const studentA = await correctTest('小明');
-//     // 過一秒後才執行下段語法
-//     // 這邊要暫停一下等它回傳我才執行下面的code
+// 過一秒後才執行下段語法
+// 這邊要暫停一下等它回傳我才執行下面的code
 //     const rewardA = await checkReward(studentA);
 //     console.log(rewardA);
 //   }catch(error){
 //     console.log(error)
 //   }
 // }
-// //執行函式
+//執行函式
 // init();
+
+//----------------------------------------我做的範例
+// 可不可以進去夜店
+// function wantToGo(yourName){
+//   return new Promise((resolve, reject) => {
+//     console.log('你有多少錢？');
+//     setTimeout(()=>{
+//       const money = Math.round(Math.random()*1000);
+//       if(money >= 200){    
+//         resolve(
+//           {
+//             yourName,
+//             money
+//           }
+//         )
+//       }else{  
+//         reject('錢不夠，滾出去!!')
+//       }
+//     }, 2000);
+//   });
+// }
+
+// function canI(number){
+//   return new Promise((resolve, reject)=>{
+//     console.log('夠嗎？可以讓開了嗎!!!')
+//     setTimeout(() => {
+//       if(number.money >= 800){
+//         resolve(`${number.yourName}你可以直接升級成我們的永久會員喔~`)
+//       }else if(number.money >= 600 && number.money<800){
+//         resolve(`${number.yourName}，你只要再加50萬就可以成為白金會員喔~每次來都能打8折`)
+//       }else{
+//         console.log(number.money);
+//         reject(`很抱歉~你不能進去~你可以回去拿錢再來`)
+//       }
+//     }, 2000)
+//   });
+// }
+
+// 原本的寫法
+// wantToGo('親愛的~')
+//   .then(number => canI(number))
+//   .then(go => console.log(go))
+//   .catch(error => console.log(error))
+
+
+// 改寫成非同步的寫法
+// async await 
+// const init = async function(){
+//   try{
+//     const who = await wantToGo('親愛的~');
+//     const decide = await canI(who);
+//     console.log(decide);
+//   }catch(error){
+//     console.log(error);
+//   }
+// }
+
+// init();
+
