@@ -507,7 +507,7 @@ function wantToGo(yourName){
     console.log('你有多少錢？');
     setTimeout(()=>{
       const money = Math.round(Math.random()*1000);
-      if(money >= 300){    
+      if(money >= 200){    
         resolve(
           {
             yourName,
@@ -517,7 +517,7 @@ function wantToGo(yourName){
       }else{  
         reject('錢不夠，滾出去!!')
       }
-    }, 3000);
+    }, 2000);
   });
 }
 
@@ -525,9 +525,9 @@ function canI(number){
   return new Promise((resolve, reject)=>{
     console.log('夠嗎？可以讓開了嗎!!!')
     setTimeout(() => {
-      if(number.money >= 500){
+      if(number.money >= 800){
         resolve(`${number.yourName}你可以直接升級成我們的永久會員喔~`)
-      }else if(number.money >= 300 && number.money<500){
+      }else if(number.money >= 600 && number.money<800){
         resolve(`${number.yourName}，你只要再加50萬就可以成為白金會員喔~每次來都能打8折`)
       }else{
         console.log(number.money);
