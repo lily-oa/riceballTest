@@ -565,5 +565,33 @@
 // }
 
 // init();
+
+//-----------------------------promise.all
+// function correctTest(name){
+//   return new Promise((resolve, reject) =>{
+//     console.log('批改作業中');
+//     setTimeout(()=>{
+//       const score = Math.round(Math.random()*100);
+//         resolve(
+//           {
+//             name, 
+//             score
+//           }
+//         )
+//       }, Math.random()*10000);
+//   })
+// }
+
+// Promise.all([correctTest('小明'), correctTest('小花'), correctTest('小小')])
+//   .then(data => console.log(data));
+
+//--------------------------------- Fetch
+// const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
+
+//----------------------------------XMLHttpRequest 改寫為 Promise 格式
 "use strict";
 //# sourceMappingURL=all.js.map
