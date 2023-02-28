@@ -604,3 +604,37 @@
 //   .catch(error => console.log(error))
 
 //----------------------------------XMLHttpRequest 改寫為 Promise 格式
+// const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+
+
+// function getUrl(url){
+//   return new Promise((resolve, reject)=>{
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('GET', url);
+//     xhr.onload = () => console.log(xhr.responseText);
+//     xhr.onerror = () => console.log(xhr.statusText);
+//     xhr.send();    
+//   })
+// }
+
+// getUrl(url)
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
+
+//---------------------------------------axios.get 套件功能
+const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+const axios = {
+  get: function(url){
+      return new Promise((resolve, reject) =>{
+      const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onload = () => console.log(xhr.responseText);
+        xhr.onerror = () => console.log(xhr.statusText);
+        xhr.send();
+    })
+  }
+}
+
+axios.get(url)
+  .then(data => console.log(data))
+  .catch(error => console.log(error))
