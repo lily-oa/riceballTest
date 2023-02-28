@@ -1,3 +1,5 @@
+"use strict";
+
 // Swal.fire({
 //   icon:'info',
 //   title: '請填寫文字內容',
@@ -593,5 +595,42 @@
 //   .catch(error => console.log(error))
 
 //----------------------------------XMLHttpRequest 改寫為 Promise 格式
-"use strict";
+// const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+
+// function getUrl(url){
+//   return new Promise((resolve, reject)=>{
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('GET', url);
+//     xhr.onload = () => console.log(xhr.responseText);
+//     xhr.onerror = () => console.log(xhr.statusText);
+//     xhr.send();    
+//   })
+// }
+
+// getUrl(url)
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
+
+//---------------------------------------axios.get 套件功能
+var url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+var axios = {
+  get: function get(url) {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onload = function () {
+        return console.log(xhr.responseText);
+      };
+      xhr.onerror = function () {
+        return console.log(xhr.statusText);
+      };
+      xhr.send();
+    });
+  }
+};
+axios.get(url).then(function (data) {
+  return console.log(data);
+})["catch"](function (error) {
+  return console.log(error);
+});
 //# sourceMappingURL=all.js.map
