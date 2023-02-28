@@ -623,7 +623,7 @@
 
 //---------------------------------------axios.get 套件功能
 const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
-const axios{
+const axios = {
   get: function(url){
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
