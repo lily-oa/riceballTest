@@ -578,3 +578,20 @@
 // init();
 
 //-----------------------------promise.all
+function correctTest(name){
+  return new Promise((resolve, reject) =>{
+    console.log('批改作業中');
+    setTimeout(()=>{
+      const score = Math.round(Math.random()*100);
+        resolve(
+          {
+            name, 
+            score
+          }
+        )
+      }, Math.random()*10000);
+  })
+}
+
+Promise.all([correctTest('小明'), correctTest('小花'), correctTest('小小')])
+  .then(data => console.log(data));
