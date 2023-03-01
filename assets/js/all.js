@@ -612,25 +612,41 @@
 //   .catch(error => console.log(error))
 
 //---------------------------------------axios.get 套件功能
-var url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
-var axios = {
-  get: function get(url) {
-    return new Promise(function (resolve, reject) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('Get', url);
-      xhr.onload = function () {
-        return resolve(xhr.responseText);
-      };
-      xhr.onerror = function () {
-        return reject(xhr.statusText);
-      };
-      xhr.send();
-    });
+// const url = 'https://raw.githubusercontent.com/hexschool/2021-ui-frontend-job/master/frontend_data.json';
+// const axios = {
+//   get: function(url){
+//     return new Promise((resolve, reject) => {
+//       const xhr = new XMLHttpRequest();
+//       xhr.open('GET', url);
+//       xhr.onload = () => resolve(xhr.responseText);
+//       xhr.onerror = () => reject(xhr.statusText);
+//       xhr.send();
+//     })
+//   }
+// }
+
+// axios.get(url)
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
+
+//-------------------------------------------sweet 2 彈跳視窗
+// Swal.fire({
+//   icon: 'success',
+//   title: '新增成功',
+//   text: '恭喜東西新增成功',
+// })
+
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then(function (result) {
+  if (result.isConfirmed) {
+    Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
   }
-};
-axios.get(url).then(function (data) {
-  return console.log(data);
-})["catch"](function (error) {
-  return console.log(error);
 });
 //# sourceMappingURL=all.js.map
