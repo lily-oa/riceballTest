@@ -617,12 +617,12 @@ var axios = {
   get: function get(url) {
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', url);
+      xhr.open('Get', url);
       xhr.onload = function () {
-        return console.log(xhr.responseText);
+        return resolve(xhr.responseText);
       };
       xhr.onerror = function () {
-        return console.log(xhr.statusText);
+        return reject(xhr.statusText);
       };
       xhr.send();
     });
