@@ -670,9 +670,9 @@
 // })
 
 //-----------------------------註冊api
-var url = 'https://todoo.5xcamp.us';
+var apiUrl = 'https://todoo.5xcamp.us';
 function signUp(email, nickname, password) {
-  axios.post("".concat(url, "/users"), {
+  axios.post("".concat(apiUrl, "/users"), {
     "user": {
       "email": email,
       "nickname": nickname,
