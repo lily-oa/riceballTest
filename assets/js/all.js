@@ -656,16 +656,32 @@
 // })
 
 //------------------------------------------input types 可以在輸入框寫文字
-Swal.fire({
-  icon: 'info',
-  title: "請填寫文字內容",
-  input: "text"
-}).then(function (result) {
-  console.log(result.value);
-  Swal.fire({
-    icon: "success",
-    title: "新增成功",
-    text: result.value
+// Swal.fire({
+//   icon: 'info',
+//   title: '請填寫文字欄位', 
+//   input: 'text'
+// }).then(result => {
+//   console.log(result.value);
+//   Swal.fire({
+//     icon: 'success', 
+//     title:'新增內容成功', 
+//     text: result.value
+//   })
+// })
+
+//-----------------------------註冊api
+var url = 'https://todoo.5xcamp.us';
+function signUp(email, nickname, password) {
+  axios.post("".concat(url, "/users"), {
+    "user": {
+      "email": email,
+      "nickname": nickname,
+      "password": password
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (err) {
+    return console.log(err.response);
   });
-});
+}
 //# sourceMappingURL=all.js.map
