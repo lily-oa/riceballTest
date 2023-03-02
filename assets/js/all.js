@@ -636,17 +636,36 @@
 //   text: '恭喜東西新增成功',
 // })
 
+// Swal.fire({
+//   title: 'Are you sure?',
+//   text: "You won't be able to revert this!",
+//   icon: 'warning',
+//   showCancelButton: true,               //你要不要顯示刪除接鈕
+//   confirmButtonColor: '#3085d6',        //左邊按鈕的顏色  
+//   cancelButtonColor: '#d33',            //右邊取消是什麼顏色
+//   confirmButtonText: 'Yes, delete it!'  //是否有確定要刪除
+// }).then((result) => {
+//   console.log(result);
+//   if (result.isConfirmed) {
+//     Swal.fire({
+//       title: 'Deleted!',
+//       text: 'Your file has been deleted.',
+//       icon: 'success'
+//     })
+//   }
+// })
+
+//------------------------------------------input types 可以在輸入框寫文字
 Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
+  icon: 'info',
+  title: "請填寫文字內容",
+  input: "text"
 }).then(function (result) {
-  if (result.isConfirmed) {
-    Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-  }
+  console.log(result.value);
+  Swal.fire({
+    icon: "success",
+    title: "新增成功",
+    text: result.value
+  });
 });
 //# sourceMappingURL=all.js.map
