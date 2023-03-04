@@ -684,4 +684,14 @@ function signUp(email, nickname, password) {
     return console.log(err.response);
   });
 }
+function getAPI() {
+  axios.get('https://data.kcg.gov.tw/dataset/6f29f6f4-2549-4473-aa90-bf60d10895dc/resource/30dfc2cf-17b5-4a40-8bb7-c511ea166bd3/download/lightrailtraffic.json').then(function (res) {
+    return console.log(res);
+  });
+}
+function getAPI2() {
+  axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2').then(function (res2) {
+    return console.log(res2);
+  });
+}
 //# sourceMappingURL=all.js.map
