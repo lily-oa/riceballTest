@@ -682,6 +682,8 @@
 //-----------------------------註冊api
 const apiUrl = 'https://todoo.5xcamp.us';
 
+let token = '';
+
 function signUp(email, nickname, password) {
   axios.post(`${apiUrl}/users`, {
       "user": {
@@ -700,14 +702,19 @@ function getAPI(){
   .then(res => console.log(res))
 }
 
-//-----------------------------登入 login 
+//-----------------------------登入 login 及取得 authorization(授權碼)
 function login(email, pwd){
-  axios.post(`${apiUrl}/users/sign_in`,{
-    "user": {
+  axios.post(`${apiUrl}/users/sign_in`, 
+    {
+      "user": {
       "email": email,
-      "password": pwd
-    }
-  })
-  .then(res => console.log(res))
-  .catch(err => console.log(err.response))
+        "password": pwd
+      }
+    })
+      .then(res => {
+        token = res.headers.authorization;
+      })
+      .catch(err => console.log(err))
 }
+
+//----------------------------取得token 觸發代辨 todo api 
