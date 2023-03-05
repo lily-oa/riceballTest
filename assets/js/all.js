@@ -671,6 +671,7 @@
 
 //-----------------------------註冊api
 var apiUrl = 'https://todoo.5xcamp.us';
+var token = '';
 function signUp(email, nickname, password) {
   axios.post("".concat(apiUrl, "/users"), {
     "user": {
@@ -684,14 +685,27 @@ function signUp(email, nickname, password) {
     return console.log(err.response);
   });
 }
+
+//--------------------------檢查api有無支援跨網域
 function getAPI() {
   axios.get('https://data.kcg.gov.tw/dataset/6f29f6f4-2549-4473-aa90-bf60d10895dc/resource/30dfc2cf-17b5-4a40-8bb7-c511ea166bd3/download/lightrailtraffic.json').then(function (res) {
     return console.log(res);
   });
 }
-function getAPI2() {
-  axios.get('https://citypark.tainan.gov.tw/App/parking.ashx?verCode=5177E3481D&type=1&ftype=1&exportTo=2').then(function (res2) {
-    return console.log(res2);
+
+//-----------------------------登入 login 及取得 authorization(授權碼)
+function login(email, pwd) {
+  axios.post("".concat(apiUrl, "/users/sign_in"), {
+    "user": {
+      "email": email,
+      "password": pwd
+    }
+  }).then(function (res) {
+    token = res.headers.authorization;
+  })["catch"](function (err) {
+    return console.log(err);
   });
 }
+
+//----------------------------取得token 觸發代辨 todo api
 //# sourceMappingURL=all.js.map
