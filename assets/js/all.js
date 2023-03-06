@@ -707,7 +707,7 @@ function login(email, pwd) {
   });
 }
 
-//----------------------------取得token 觸發代辨 todo api 
+//----------------------------取得todo token 觸發代辨 todo api 
 function getTodo() {
   axios.get("".concat(apiUrl, "/todos"), {
     headers: {
@@ -720,7 +720,7 @@ function getTodo() {
   });
 }
 
-//---------------------------新增代辦
+//---------------------------新增 todo
 function addTodo(todo) {
   axios.post("".concat(apiUrl, "/todos"), {
     "todo": {
@@ -737,5 +737,20 @@ function addTodo(todo) {
   });
 }
 
-//-----------------------------編輯 todo API 設計
+//-----------------------------修改 todo
+function updateTodo(todo, todoId) {
+  axios.put("".concat(apiUrl, "/todos/").concat(todoId), {
+    "todo": {
+      "content": todo
+    }
+  }, {
+    headers: {
+      "Authorization": token
+    }
+  }).then(function (res) {
+    return conole.log(res);
+  })["catch"](function (err) {
+    return console.log(err.response);
+  });
+}
 //# sourceMappingURL=all.js.map
