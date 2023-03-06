@@ -729,3 +729,19 @@ function getTodo(){
 }
 
 //---------------------------新增代辦
+function addTodo(todo){
+  axios.post(`${apiUrl}/todos`, 
+{
+  "todo": {
+    "content": todo
+  }
+},{
+  headers: {
+    "Authorization": token
+  }
+})
+  .then(res => console.log(res))
+  .catch(err => console.log(err.response))
+}
+
+//-----------------------------編輯 todo API 設計
