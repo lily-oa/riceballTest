@@ -707,5 +707,35 @@ function login(email, pwd) {
   });
 }
 
-//----------------------------取得token 觸發代辨 todo api
+//----------------------------取得token 觸發代辨 todo api 
+function getTodo() {
+  axios.get("".concat(apiUrl, "/todos"), {
+    headers: {
+      "Authorization": token
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (err) {
+    return console.log(err.response);
+  });
+}
+
+//---------------------------新增代辦
+function addTodo(todo) {
+  axios.post("".concat(apiUrl, "/todos"), {
+    "todo": {
+      "content": todo
+    }
+  }, {
+    headers: {
+      "Authorization": token
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (err) {
+    return console.log(err.response);
+  });
+}
+
+//-----------------------------編輯 todo API 設計
 //# sourceMappingURL=all.js.map
