@@ -717,7 +717,7 @@ function login(email, pwd){
       .catch(err => console.log(err))
 }
 
-//----------------------------取得token 觸發代辨 todo api 
+//----------------------------取得todo token 觸發代辨 todo api 
 function getTodo(){
   axios.get(`${apiUrl}/todos`, {
     headers:{
@@ -728,7 +728,7 @@ function getTodo(){
     .catch(err => console.log(err.response))
 }
 
-//---------------------------新增代辦
+//---------------------------新增 todo
 function addTodo(todo){
   axios.post(`${apiUrl}/todos`, 
 {
@@ -744,4 +744,17 @@ function addTodo(todo){
   .catch(err => console.log(err.response))
 }
 
-//-----------------------------編輯 todo API 設計
+//-----------------------------修改 todo
+function updateTodo(todo, todoId){
+  axios.put(`${apiUrl}/todos/${todoId}`, {
+    "todo": {
+      "content": todo
+    }
+  },{
+    headers:{
+      "Authorization": token
+    }
+  })
+    .then(res => conole.log(res))
+    .catch(err => console.log(err.response))
+}
