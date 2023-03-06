@@ -718,3 +718,12 @@ function login(email, pwd){
 }
 
 //----------------------------取得token 觸發代辨 todo api 
+function getTodo(){
+  axios.get(`${apiUrl}/todos`, {
+    headers:{
+      "Authorization": token
+    }
+  })
+    .then(res => console.log(res))
+    .catch(err => console.log(err.response))
+}
