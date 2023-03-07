@@ -755,4 +755,15 @@ function updateTodo(todo, todoId) {
 }
 
 //-----------------------------刪除 todo api
+function deleteTodo(todoId) {
+  axios["delete"]("".concat(apiUrl, "/todos/").concat(todoId), {
+    headers: {
+      "Authorization": token
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (err) {
+    return console.log(err.response);
+  });
+}
 //# sourceMappingURL=all.js.map
