@@ -760,5 +760,13 @@ function updateTodo(todo, todoId){
     .catch(err => console.log(err.response))
 }
 
-
 //-----------------------------刪除 todo api
+function deleteTodo(todoId){
+  axios.delete(`${apiUrl}/todos/${todoId}`, {
+    headers:{
+      "Authorization": token 
+    }
+  })
+    .then(res => console.log(res))
+    .catch(err => console.log(err.response))
+}
