@@ -746,15 +746,19 @@ function addTodo(todo){
 
 //-----------------------------修改 todo
 function updateTodo(todo, todoId){
-  axios.put(`${apiUrl}/todos/${todoId}`, {
-    "todo": {
+  axios.put(`${apiUrl}/todos/${todoId}`, 
+  {
+    "todo":{
       "content": todo
     }
-  },{
+  }, {
     headers:{
       "Authorization": token
     }
   })
-    .then(res => conole.log(res))
+    .then(res => console.log(res))
     .catch(err => console.log(err.response))
 }
+
+
+//-----------------------------刪除 todo api
