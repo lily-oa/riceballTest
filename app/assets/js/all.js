@@ -770,3 +770,14 @@ function deleteTodo(todoId){
     .then(res => console.log(res))
     .catch(err => console.log(err.response))
 }
+
+//----------------------------切換 toggle(已完成和未完成) todo
+function toggleTodo(todoId){
+  axios.patch(`${apiUrl}/todos/${todoId}/toggle`, {}, {
+    headers:{
+      "Authorization": token
+    }
+  })
+    .then(res => console.log(res))
+    .catch(err => console.log(err.response))
+}
