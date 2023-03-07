@@ -766,4 +766,17 @@ function deleteTodo(todoId) {
     return console.log(err.response);
   });
 }
+
+//----------------------------切換 toggle(已完成和未完成) todo
+function toggleTodo(todoId) {
+  axios.patch("".concat(apiUrl, "/todos/").concat(todoId, "/toggle"), {}, {
+    headers: {
+      "Authorization": token
+    }
+  }).then(function (res) {
+    return console.log(res);
+  })["catch"](function (err) {
+    return console.log(err.response);
+  });
+}
 //# sourceMappingURL=all.js.map
