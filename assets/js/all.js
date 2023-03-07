@@ -748,9 +748,11 @@ function updateTodo(todo, todoId) {
       "Authorization": token
     }
   }).then(function (res) {
-    return conole.log(res);
+    return console.log(res);
   })["catch"](function (err) {
     return console.log(err.response);
   });
 }
+
+//-----------------------------刪除 todo api
 //# sourceMappingURL=all.js.map
