@@ -712,7 +712,7 @@ function login(email, pwd){
       }
     })
       .then(res => {
-        // 預設在所有的 api 都幫你加上 token
+        // 預設在所有headers的欄位幫你將token抓過來
         axios.defaults.headers.common['Authorization'] = res.headers.authorization;
       })
       .catch(err => console.log(err))
@@ -732,10 +732,6 @@ function addTodo(todo){
   "todo": {
     "content": todo
   }
-},{
-  headers: {
-    "Authorization": token
-  }
 })
   .then(res => console.log(res))
   .catch(err => console.log(err.response))
@@ -748,10 +744,6 @@ function updateTodo(todo, todoId){
     "todo":{
       "content": todo
     }
-  }, {
-    headers:{
-      "Authorization": token
-    }
   })
     .then(res => console.log(res))
     .catch(err => console.log(err.response))
@@ -759,22 +751,14 @@ function updateTodo(todo, todoId){
 
 //-----------------------------刪除 todo api
 function deleteTodo(todoId){
-  axios.delete(`${apiUrl}/todos/${todoId}`, {
-    headers:{
-      "Authorization": token 
-    }
-  })
+  axios.delete(`${apiUrl}/todos/${todoId}`)
     .then(res => console.log(res))
     .catch(err => console.log(err.response))
 }
 
 //----------------------------切換 toggle(已完成和未完成) todo
 function toggleTodo(todoId){
-  axios.patch(`${apiUrl}/todos/${todoId}/toggle`, {}, {
-    headers:{
-      "Authorization": token
-    }
-  })
+  axios.patch(`${apiUrl}/todos/${todoId}/toggle`, {})
     .then(res => console.log(res))
     .catch(err => console.log(err.response))
 }
