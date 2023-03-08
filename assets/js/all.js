@@ -701,7 +701,7 @@ function login(email, pwd) {
       "password": pwd
     }
   }).then(function (res) {
-    // 預設在所有的 api 都幫你加上 token
+    // 預設在所有headers的欄位幫你將token抓過來
     axios.defaults.headers.common['Authorization'] = res.headers.authorization;
   })["catch"](function (err) {
     return console.log(err);
@@ -723,10 +723,6 @@ function addTodo(todo) {
     "todo": {
       "content": todo
     }
-  }, {
-    headers: {
-      "Authorization": token
-    }
   }).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
@@ -740,10 +736,6 @@ function updateTodo(todo, todoId) {
     "todo": {
       "content": todo
     }
-  }, {
-    headers: {
-      "Authorization": token
-    }
   }).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
@@ -753,11 +745,7 @@ function updateTodo(todo, todoId) {
 
 //-----------------------------刪除 todo api
 function deleteTodo(todoId) {
-  axios["delete"]("".concat(apiUrl, "/todos/").concat(todoId), {
-    headers: {
-      "Authorization": token
-    }
-  }).then(function (res) {
+  axios["delete"]("".concat(apiUrl, "/todos/").concat(todoId)).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
     return console.log(err.response);
@@ -766,11 +754,7 @@ function deleteTodo(todoId) {
 
 //----------------------------切換 toggle(已完成和未完成) todo
 function toggleTodo(todoId) {
-  axios.patch("".concat(apiUrl, "/todos/").concat(todoId, "/toggle"), {}, {
-    headers: {
-      "Authorization": token
-    }
-  }).then(function (res) {
+  axios.patch("".concat(apiUrl, "/todos/").concat(todoId, "/toggle"), {}).then(function (res) {
     return console.log(res);
   })["catch"](function (err) {
     return console.log(err.response);
