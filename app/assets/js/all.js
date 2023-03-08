@@ -700,6 +700,7 @@ function signUp(email, nickname, password) {
 function getAPI(){
   axios.get('https://data.kcg.gov.tw/dataset/6f29f6f4-2549-4473-aa90-bf60d10895dc/resource/30dfc2cf-17b5-4a40-8bb7-c511ea166bd3/download/lightrailtraffic.json')
   .then(res => console.log(res))
+  .catch(err => console.log(err.response))
 }
 
 //-----------------------------登入 login 及取得 authorization(授權碼)
@@ -712,7 +713,7 @@ function login(email, pwd){
       }
     })
       .then(res => {
-        // 預設在所有headers的欄位幫你將token抓過來
+        // 預設在所有headers的欄位幫你將token抓過來(全域加上)
         axios.defaults.headers.common['Authorization'] = res.headers.authorization;
       })
       .catch(err => console.log(err))
