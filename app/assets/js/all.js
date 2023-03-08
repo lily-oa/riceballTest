@@ -712,18 +712,15 @@ function login(email, pwd){
       }
     })
       .then(res => {
-        token = res.headers.authorization;
+        // 預設在所有的 api 都幫你加上 token
+        axios.defaults.headers.common['Authorization'] = res.headers.authorization;
       })
       .catch(err => console.log(err))
 }
 
 //----------------------------取得todo token 觸發代辨 todo api 
 function getTodo(){
-  axios.get(`${apiUrl}/todos`, {
-    headers:{
-      "Authorization": token
-    }
-  })
+  axios.get(`${apiUrl}/todos`)
     .then(res => console.log(res))
     .catch(err => console.log(err.response))
 }
